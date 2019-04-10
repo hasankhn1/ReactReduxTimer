@@ -1,0 +1,79 @@
+body{
+  font-family: Arial;
+  /* overflow: hidden; */
+}
+.bg-home{
+  background: #176FEB;
+  width: 100%;
+  padding: 10% 10%;
+}
+.upper-heading h6{
+  color: #8ABCFE;
+}
+.upper-heading h1{
+  color: #FFFFFF;
+  margin-top: -14px;
+
+}
+.lower-body{
+  margin-top: 100px;
+}
+.lower-body h6{
+  color: #8ABCFE;
+}
+.timer{
+  background-color: black;
+  width: 30%;
+  text-align: center;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+}
+.clock-heading h6{
+  color: #808591;
+  margin: 15px 25px 0 0;
+  float: right;
+}
+#clockdiv{
+  color: #fff;
+  display: inline-block;
+  font-weight: 100;
+  text-align: center;
+  font-size: 30px;
+}
+
+#clockdiv > div{
+  padding: 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+#clockdiv div > span{
+  padding: 10px 15px 6px 15px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.smalltext{
+  font-size: 14px;
+  color: #808591;
+}
+.clock-buttons{
+  width: 30%;
+  text-align: center;
+}
+.clock-buttons ul{
+  list-style-type:none;
+}
+.clock-buttons ul li{
+  float: left;
+
+}
+.clock-buttons ul li button{
+  text-decoration: none;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 4px;
+  border: #176FEB;
+  margin-right: 20px;
+  background: #176FEB;
+  font-size: 12px;
+}
