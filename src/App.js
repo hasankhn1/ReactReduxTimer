@@ -1,19 +1,31 @@
 import React, { Component } from 'react';
-import './App.css';
-import moment from 'moment';
 import { connect } from 'react-redux'
 import { increment, decrement } from './actions/actions';
+import * as constants from './constants/appConstants';
+import './App.css';
 class App extends Component {
-  constructor(props) {
-    super()
+  state = {
+    activeSession: 'SECONDS',
   }
 
-  componentDidMount() {
-    
+  setActiveSession = (e) => {
+    if (e.currentTarget.id === constants.DAYS) {
+      this.setState({ activeSession: constants.DAYS_SESSION })
+    }
+    if (e.currentTarget.id === constants.HOURS) {
+      this.setState({ activeSession: constants.HOURS_SESSION })
+    }
+    if (e.currentTarget.id === constants.MINUTES) {
+      this.setState({ activeSession: constants.MINUTES_SESSION })
+    }
+    if (e.currentTarget.id === constants.SECONDS) {
+      this.setState({ activeSession: constants.SECONDS_SESSION })
+    }
   }
 
   render() {
-    const { timer } = this.props
+    const { seconds, hours, minutes, days } = this.props;
+    const { activeSession } = this.state
     return (
       <div className="bg-home">
         <div className="upper-heading">
@@ -24,36 +36,36 @@ class App extends Component {
           <h6>TOTAL TIME SPENT ON THE PROJECT</h6>
           <div className="timer">
             <div className="clock-heading">
-              <h6>ACTIVE SESSION: MINUTES</h6>
+              <h6>ACTIVE SESSION: {activeSession}</h6>
             </div>
 
             <div id="clockdiv">
-              <div>
-                <span className="days">{moment().format('DD')}</span>
-                <div className="smalltext">Days</div>
-              </div>
-              <div>
-                <span className="hours">{moment().format('HH')}</span>
-                <div className="smalltext">Hours</div>
-              </div>
-              <div>
-                <span className="minutes">{moment().format('mm')}</span>
-                <div className="smalltext">Minutes</div>
-              </div>
-              <div>
-                <span className="seconds">{timer}</span>
-                <div className="smalltext">Seconds</div>
-              </div>
+              <div id={constants.DAYS} onClick={this.setActiveSession}>
+                <span className="days pointer">{days}</span>
+              <div className="smalltext">Days</div>
             </div>
+            <div id={constants.HOURS} onClick={this.setActiveSession}>
+                <span className="hours pointer">{hours}</span>
+            <div className="smalltext">Hours</div>
           </div>
-          <div className="clock-buttons">
-            <ul>
-              <li><button onClick={this.props.increment}>INCREASE</button></li>
-              <li><button onClick={this.props.decrement}>DECREASE</button></li>
-            </ul>
-          </div>
+          <div id={constants.MINUTES} onClick={this.setActiveSession}>
+                <span className="minutes pointer">{minutes}</span>
+          <div className="smalltext">Minutes</div>
+        </div>
+        <div id={constants.SECONDS} onClick={this.setActiveSession}>
+          <span className="seconds pointer">{seconds}</span>
+          <div className="smalltext">Seconds</div>
         </div>
       </div>
+          </div >
+      <div className="clock-buttons">
+        <ul>
+          <li><button onClick={() => this.props.increment({ activeSession })}>INCREASE</button></li>
+          <li><button onClick={() => this.props.decrement({ activeSession })}>DECREASE</button></li>
+        </ul>
+      </div>
+        </div >
+      </div >
     );
   }
 }

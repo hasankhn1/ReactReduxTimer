@@ -1,5 +1,3 @@
-const INCREMENT_TIMER = 'INCREMENT_TIMER';
-const DECREMENT_TIMER = 'DECREMENT_TIMER';
-
-export const increment = () => ({ type: INCREMENT_TIMER })
-export const decrement = () => ({ type: DECREMENT_TIMER })
+import * as actionTypes from './actionTypes'
+export const increment = (val) => ({ type: actionTypes.INCREMENT, activeSession: val.activeSession })
+export const decrement = (val) => ({ type: actionTypes.DECREMENT, activeSession: val.activeSession })
